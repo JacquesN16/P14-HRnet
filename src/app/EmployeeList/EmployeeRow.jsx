@@ -9,10 +9,10 @@ export default function EmployeeRow (props) {
         <td>{props.employee.startDate}</td>
         <td>{props.employee.department}</td>
         <td>{props.employee.dateOfBirth}</td>
-        <td>{props.employee.address.street}</td>
-        <td>{props.employee.address.city}</td>
-        <td>{props.employee.address.state}</td>
-        <td>{props.employee.address.zipCode}</td>
+        <td>{props.employee.street}</td>
+        <td>{props.employee.city}</td>
+        <td>{props.employee.state}</td>
+        <td>{props.employee.zipCode}</td>
     </tr>)
 }
 

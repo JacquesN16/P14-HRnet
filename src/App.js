@@ -7,7 +7,7 @@ import EmployeeList from "./app/EmployeeList/EmployeeList";
 import createEmployee from "./utils/mockData"
 function App() {
 
-    const employeeList = createEmployee(20)
+    const employeeList = createEmployee(45)
 
   return (
           <div className="App">

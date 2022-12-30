@@ -11,12 +11,10 @@ function createEmployee (
             lastName : faker.name.lastName(),
             dateOfBirth: faker.date.past(20).toLocaleDateString('fr-FR'),
             startDate: faker.date.past(2).toLocaleDateString('fr-FR'),
-            address:{
-                street: faker.address.street(),
-                city: faker.address.cityName(),
-                state: faker.address.state(),
-                zipCode: faker.datatype.number({min:11111, max:99999})
-            },
+            street: faker.address.street(),
+            city: faker.address.cityName(),
+            state: faker.address.state(),
+            zipCode: faker.datatype.number({min:11111, max:99999}),
             department: constant.department[faker.datatype.number({min:0, max:4})]
         }
 
