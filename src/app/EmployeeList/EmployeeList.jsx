@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 import EmployeeRow from "./EmployeeRow";
 import constant from "../../utils/constant";
 import Pager from "../../component/Pager";
+import {useSelector} from "react-redux";
 
-export default function EmployeeList (props) {
+export default function EmployeeList () {
 
+    const employeeList = useSelector( s => s.global.employee)
     const [data, setData] = useState([])
-
     const [entriesCount, setEntriesCount] = useState(constant.queryCounts[0])
     const [firstItemIdx, setFirstItemIdx] = useState(0)
     const [lastItemIdx, setLastItemIdx] = useState(0)
@@ -36,10 +37,11 @@ export default function EmployeeList (props) {
     }
 
 
+
     useEffect(()=>{
-        const list = props.employeeList.slice(firstItemIdx, lastItemIdx)
+        const list = employeeList.slice(firstItemIdx, lastItemIdx)
         setData(list)
-    },[firstItemIdx])
+    },[firstItemIdx,employeeList])
 
     useEffect(()=>{
             setFirstItemIdx(entriesCount*pageNumber)
@@ -47,15 +49,15 @@ export default function EmployeeList (props) {
     },[pageNumber])
 
     useEffect(()=>{
-        const length = props.employeeList.length || 0
+        const length = employeeList.length || 0
         setPageCount(length/entriesCount)
-    },[props.employeeList, entriesCount])
+    },[employeeList, entriesCount])
 
     useEffect(()=>{
-        const newData = props.employeeList.slice(0,entriesCount)
+        const newData = employeeList.slice(0,entriesCount)
         setData(newData)
         setLastItemIdx(firstItemIdx + newData.length)
-    },[entriesCount])
+    },[entriesCount, employeeList])
 
     useEffect(()=>{
         if(searchQuery && searchQuery.length >= 3){
@@ -74,10 +76,14 @@ export default function EmployeeList (props) {
                 setData(newData)
             }
         }else{
-            setData(props.employeeList.slice(firstItemIdx, lastItemIdx))
+            setData(employeeList.slice(firstItemIdx, lastItemIdx))
         }
 
-    },[searchQuery])
+    },[searchQuery, employeeList])
+
+    useEffect(()=>{
+        setData(employeeList.slice(0,entriesCount))
+    },[])
 
 
     return(<>
@@ -190,7 +196,7 @@ export default function EmployeeList (props) {
             <div className="w-100">
                 <div className="w-100 d-flex justify-content-between">
                     <div>
-                        Showing {firstItemIdx + 1} to {lastItemIdx} of {props.employeeList.length} entries
+                        Showing {firstItemIdx + 1} to {lastItemIdx} of {employeeList.length} entries
                     </div>
                     <div className="d-flex">
                         <div className=" mx-3">
@@ -215,6 +221,3 @@ export default function EmployeeList (props) {
     </>)
 }
 
-EmployeeList.propTypes = {
-    employeeList: PropTypes.array
-}

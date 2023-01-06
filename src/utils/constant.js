@@ -1,14 +1,11 @@
 
 const queryCounts = [10,25,50,100]
-
 const inputSize = {
     xs: 'xs',
     sm: 'sm',
     md: 'md',
     lg: 'lg'
-
 }
-
 const states = [
     {
         "name": "Alabama",
