@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "node-sass": "^7.0.3",
-    "ocproject-jn-date-picker-react": "0.1.5",
+    "ocproject-jn-date-picker-react": "0.1.6",
     "prettier": "^2.8.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
